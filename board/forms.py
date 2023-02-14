@@ -14,6 +14,6 @@ class PostForm(ModelForm):
         }
         error_messages = {
             'title': {
-                'max_length': _("제목이 너무 깁니다. 50자 이하로 작성해 주세요.")
+                'max_length': _("50자 이하로 작성해 주세요.")
             }
         }
