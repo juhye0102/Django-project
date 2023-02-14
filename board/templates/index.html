@@ -1,0 +1,14 @@
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+    <h1 style="color: slategray;">My Blog</h1>
+    <hr>
+    <img src="{% static 'board/image.jpg' %}" alt="test" >
+    <p>{{ current_date }}</p>
+    <a href='/board/create' style="text-decoration: none; color: black;"><h2>게시글 작성하기</h2></a>
+</body>
+</html>

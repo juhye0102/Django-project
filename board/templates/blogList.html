@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+</head>
+<body>
+    <div>
+        {% for item in items %}
+            {{ item.title }}
+            {{ item.body }}
+        {% endfor %}
+        <hr>
+    </div>
+</body>
+</html>

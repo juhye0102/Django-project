@@ -1,0 +1,11 @@
+{% load static %}
+{% block content %}
+    <h2>게시글 작성</h2>
+    <hr>
+    <form action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <hr>
+        <button type="submit" style="font-size: 16px">게시글 등록</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+{% block content %}
+    <h2>Post List</h2>
+    <a href="{% url 'create' %}" style="text-decoration: none; color: black;"><h3>[ 글 작성하기 ]</h3></a>
+    <hr>
+    {% for item in items %}
+    <div>
+        <a href="{% url 'detail' pk=item.pk %}" style="text-decoration: none; color: black;"><h1>{{ item.title }} </h1></a>
+        <h4>[ 작성자 : {{ item.author }} ]</h4>
+        <a href="{% url 'delete' item.pk %}" style="color: black;" onclick="alert('삭제되었습니다.')">[ 삭제 ]</a>
+        <p>[ 조회: {{ item.view }} ] [ 작성일: {{ item.create_at }} ]</p>
+        <p>{{ item.summary }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock %}
