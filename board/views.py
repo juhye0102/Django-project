@@ -6,13 +6,13 @@ from django.http import HttpResponseRedirect
 from .forms import PostForm
 from .models import Post
 
-from datetime import timezone
+from datetime import datetime, timezone
 
 
 # 메인 화면
 def index(request):
     template = loader.get_template('index.html')
-    now = timezone.now()
+    now = datetime.now()
     context = {
         'current_date': now
     }
@@ -57,7 +57,7 @@ def update(request, pk):
     post.title = request.POST.get('title')
     post.author = request.POST.get('author')
     post.content = request.POST.get('content')
-    post.updated_at = timezone.now()
+    post.updated_at = datetime.now()
     post.save()
     return render(request, 'detail.html', update.pk)
 
