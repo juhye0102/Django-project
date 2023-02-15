@@ -13,6 +13,7 @@
             else
                 document.write("[ 작성일: {{ post.created_at }} ]  [ 수정일: {{ post.updated_at }} ]")
         </script>
+        <br>
         <a href="/board/list/">List</a>
         <a href="{% url 'edit' post.pk %}">Edit</a>
         <a href="{% url 'delete' post.pk %}" onclick="alert('삭제되었습니다.')">Delete</a>
