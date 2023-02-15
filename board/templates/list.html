@@ -5,11 +5,17 @@
     <hr>
     {% for item in items %}
     <div>
-        <a href="{% url 'detail' pk=item.pk %}" style="text-decoration: none; color: black;"><h1>{{ item.title }} </h1></a>
+        <a href="{% url 'detail' pk=item.pk %}" style="text-decoration: none; color: black;"><h2>{{ item.title }} </h2></a>
         <h4>[ 작성자 : {{ item.author }} ]</h4>
         <a href="{% url 'delete' item.pk %}" style="color: black;" onclick="alert('삭제되었습니다.')">[ 삭제 ]</a>
         <p>[ 조회: {{ item.view }} ]</p>
-        <p>[ 작성일: {{ item.created_at }} ] [ 수정일: {{ item.updated_at }} ]</p>
+        <script>
+            if("{{ item.created_at }}" === "{{ item.updated_at }}") {
+                document.write("[ 작성일: {{ item.created_at }} ] " )
+            }
+            else
+                document.write("[ 작성일: {{ item.created_at }} ]  [ 수정일: {{ item.updated_at }} ]")
+        </script>
         <p>{{ item.summary }}</p>
         <hr>
     </div>
