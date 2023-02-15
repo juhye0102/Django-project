@@ -5,7 +5,7 @@
     <div>
         <h1>{{ post.title }}</h1>
         <p>{{ post.author }}</p>
-        <p>View : {{ post.view }} Create : {{ post.created_at }}</p>
+        <p>View : {{ post.view }} Created : {{ post.created_at }}</p>
         <a href="/board/list/">List</a>
         <a href="{% url 'edit' post.pk %}">Edit</a>
         <a href="{% url 'delete' post.pk %}" onclick="alert('삭제되었습니다.')">Delete</a>
