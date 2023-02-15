@@ -48,18 +48,18 @@ def detail(request, pk):
 
 
 def edit(request, pk):
-    post = Post.objects.get(pk=pk)
-    return render(request, 'edit.html', {'post': post})
+    edit_post = Post.objects.get(pk=pk)
+    return render(request, 'edit.html', {'post': edit_post})
 
 
 def update(request, pk):
-    post = Post.objects.get(pk=pk)
-    post.title = request.POST.get('title')
-    post.author = request.POST.get('author')
-    post.content = request.POST.get('content')
-    post.updated_at = datetime.now()
-    post.save()
-    return render(request, 'detail.html', update.pk)
+    update_post = Post.objects.get(pk=pk)
+    update_post.title = request.POST.get('title')
+    update_post.author = request.POST.get('author')
+    update_post.content = request.POST.get('content')
+    update_post.updated_at = datetime.now()
+    update_post.save()
+    return redirect('detail', update_post.pk)
 
 
 def delete(request, pk):
