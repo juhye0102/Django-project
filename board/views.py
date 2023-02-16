@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from django.template import loader
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator
 
 from .forms import PostForm
 from .models import Post
@@ -17,7 +16,6 @@ def index(request):
     context = {
         'current_date': now
     }
-    
     return HttpResponse(template.render(context, request))
 
 
@@ -33,10 +31,10 @@ def list(request):
 # 게시글 작성
 def create(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)  
-        if form.is_valid():  
-            new_item = form.save()  
-        return HttpResponseRedirect('/board/list/') 
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_item = form.save()
+        return HttpResponseRedirect('/board/list/')
     form = PostForm()
     return render(request, 'create.html', {'form': form})
 
