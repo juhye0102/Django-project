@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from django.template import loader
 from django.http import HttpResponse
@@ -42,6 +43,8 @@ def create(request):
 # 게시글 상세 보기
 def detail(request, pk):
     post = Post.objects.get(pk=pk)
+    post.view += 1
+    post.save()
     post = get_object_or_404(Post, pk=pk)  # 잘못된 접근에 대한 예외 처리
     return render(request, 'detail.html', {'post': post})
 
