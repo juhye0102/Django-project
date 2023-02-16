@@ -13,10 +13,5 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def update_counter(self):
-        self.view += 1
-        self.save()
-
     def summary(self):
         return self.content[:30]
