@@ -1,11 +1,18 @@
 {% load static %}
-{% block content %}
-    <h2>게시글 작성</h2>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+    <title>게시글 작성</title>
+</head>
+<body>
+    <header>
+        <a class="back" href="{% url 'list' %}"><h2 class="back_list">돌아가기</h2></a>
+    </header>
     <hr>
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <hr>
-        <button type="submit" style="font-size: 16px">게시글 등록</button>
+        <hr class="under_line">
+        <button class="add_post" type="submit" style="font-size: 16px">게시글 등록</button>
     </form>
-{% endblock %}
+</body>

@@ -1,0 +1,37 @@
+body {
+    width: 70%;
+    margin: 2% 15% ;
+}
+
+header {
+    text-align: center;
+
+}
+
+.back {
+    text-decoration-line: none;
+}
+
+.back_list {
+    text-align: right;
+    margin: 0.5em 1em;
+    color: black;
+}
+
+form {
+    text-align: center;
+    margin: 4% 0;
+}
+
+.form_title {
+
+}
+
+.under_line {
+    margin: 4% 0 2% 0;
+}
+
+button {
+    background-color: transparent;
+    outline: none;
+}
