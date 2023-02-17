@@ -1,0 +1,37 @@
+
+/* Common Settings on Computers */
+@media screen and (min-width: 769px) {
+	/* TEMPORARY, Going to Remove */
+    body > * > * {
+        margin: 0 auto;
+        border: 1px solid black;
+    }
+    /* END TEMPORARY ####################### */
+}
+/* end Common Settings on Computers */
+
+/* Small screens */
+@media screen and (min-width:769px) and (max-width: 1024px) {
+    body > * > * {
+        width: 768px;
+    }
+}
+/* end Small screens */
+
+
+/* Desktop screens */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    body > * > * {
+        width: 1024px;
+    }
+}
+/* end Desktop screens */
+
+
+/* Wide screens */
+@media screen and (min-width:1201px) {
+    body > * > * {
+        width: 1024px;
+    }
+}
+/* end Wide screens */
