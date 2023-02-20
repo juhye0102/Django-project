@@ -1,0 +1,42 @@
+body {
+    background-color: #F8F9FA;
+    margin: 2% 20% 2% 20%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.detail_post {
+    margin: auto;
+    width: 100%;
+}
+
+header {
+    justify-content: space-between;
+    position: relative;
+    width: 50%;
+    margin-right: auto;
+    display: flex;
+}
+
+.post_author {
+    text-align: left;
+}
+
+.post_view {
+    text-align: right;
+}
+
+.post_info {
+    margin: auto;
+    justify-content: space-around;
+}
+
+.button_wrapper {
+    text-align: right;
+    margin-left: auto;
+}
+
+.post_at {
+    text-align: right;
+    margin-left: 80%;
+}

@@ -1,20 +1,30 @@
 {% load static %}
-{% block content %}
-    <div>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.author }}</p>
-        <script>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+</head>
+    <div class="detail_post">
+        <header>
+            <h1>{{ post.title }}</h1>
+        </header>
+        <div class="button_wrapper">
+            <a href="/board/list/">List</a>
+            <a href="{% url 'edit' post.pk %}">Edit</a>
+            <a href="{% url 'delete' post.pk %}" onclick="alert('삭제되었습니다.')">Delete</a>
+        </div>
+        <div class="post_info">
+            <h4 class="post_author">{{ post.author }}</h4>
+            <p class="post_view">View : {{ post.view }} </p>
+        </div>
+
+        <hr>
+        <script class="post_at">
             if("{{ post.created_at }}" === "{{ post.updated_at }}") {
-                document.write("[ 작성일: {{ post.created_at }} ] " )
+                document.write(" 작성일: {{ post.created_at }} " )
             }
             else
-                document.write("[ 작성일: {{ post.created_at }} ]  [ 수정일: {{ post.updated_at }} ]")
+                document.write(" 작성일: {{ post.created_at }}  수정일: {{ post.updated_at }} ")
         </script>
-        <p>View : {{ post.view }} </p>
-        <a href="/board/list/">List</a>
-        <a href="{% url 'edit' post.pk %}">Edit</a>
-        <a href="{% url 'delete' post.pk %}" onclick="alert('삭제되었습니다.')">Delete</a>
-        <hr>
         <p>{{ post.content }}</p>
     </div>
-{% endblock %}
