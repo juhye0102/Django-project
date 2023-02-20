@@ -9,8 +9,8 @@ class PostForm(ModelForm):
         fields = ['title', 'content', 'author']
         widgets = {
             'title': ModelForm.TextInput(attrs={'class': 'form_title', 'placeholder': '제목을 입력하세요.'}),
-            'content': ModelForm.TextInput(attrs={'class': 'form_content'}),
-            'author': ModelForm.TextInput(attrs={'class': 'form_author'}),
+            'content': ModelForm.TextInput(attrs={'class': 'form_content', 'placeholder': '내용을 입력하세요.'}),
+            'author': ModelForm.TextInput(attrs={'class': 'form_author', 'placeholder': '작성자 이름을 입력하세요.'}),
         }
         # labels = {
         #     'title': _('제목'),
