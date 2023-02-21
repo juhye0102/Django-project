@@ -32,4 +32,21 @@
         </div>
         {% endfor %}
     </div>
+    <div>
+        <ul style="display: flex; list-style: none;">
+        {% if page_object.has_previous %}
+        <li style="margin: 3%";><a style="text-decoration: none; color: slategray;" href="?page={{ page_object.previous_page_number }}">&#10094; Prev</a></li>
+        {% endif %}
+            {% for page in paginator.page_range %}
+                {% if page == page_object.number %}
+                    <li style="margin: 3%;"><a style="text-decoration: none; color: black; font: bold;" href="?page={{ page }}">{{ page }}</a></li>
+                {% else %}
+                    <li style="margin: 3%;"><a style="text-decoration: none; color: black" href="?page={{ page }}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% if page_object.has_next %}
+        <li style="margin: 3%";><a style="text-decoration: none; color: slategray;" href="?page={{ page_object.next_page_number }}">&#10095;</a></li>
+        {% endif %}
+        </ul>
+    </div>
 </body>
