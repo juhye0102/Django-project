@@ -1,18 +1,33 @@
 {% load static %}
+{% load bootstrap4 %}
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/create.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>게시글 작성</title>
 </head>
 <body>
     <header>
-        <a class="back" href="{% url 'list' %}"><h2 class="back_list">돌아가기</h2></a>
+        <a href="{% url 'list' %}"><h4 class="back_list">돌아가기</h4></a>
     </header>
     <hr>
-    <form action="{% url 'create' %}" method="post">
+    <form action="{% url 'create' %}" method="post" id="board_form">
         {% csrf_token %}
-        {{ form }}
+        <div class="post_input">
+            <label for="title"></label>
+            <input type="text" name="title" id="title" value="{{post.title}}" placeholder="제목을 입력하세요.">
+        </div>
+        <div class="post_input">
+            <label for="author"></label>
+            <input type="text" name="author" id="author" value="{{post.author}}" placeholder="작성자 이름을 입력하세요.">
+        </div>
+        <div class="post_input">
+            <label for="content"></label>
+            <textarea name="content" id="content" placeholder="내용을 입력하세요.">{{post.content}}</textarea>
+        </div>
+        <div class="post_btn">
+            <button class="add_post" type="submit" style="font-size: 16px">게시글 등록</button>
+        </div>
         <hr class="under_line">
-        <button class="add_post" type="submit" style="font-size: 16px">게시글 등록</button>
     </form>
 </body>
