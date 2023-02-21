@@ -1,37 +1,81 @@
 body {
-    width: 70%;
-    margin: 2% 15% ;
+    background-color: #F8F9FA;
+    margin: 2% 10% 2% 10%;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 header {
-    text-align: center;
-
-}
-
-.back {
-    text-decoration-line: none;
-}
-
-.back_list {
-    text-align: right;
-    margin: 0.5em 1em;
-    color: black;
-}
-
-form {
-    text-align: center;
-    margin: 4% 0;
+    width: 70%;
+    align-items: center;
+    display: flex;
+    margin: auto;
 }
 
 .form_title {
+    background-color: transparent;
+    border: none;
+}
+
+.back_list {
+    color: black;
+    text-decoration: none;
+    text-align: right;
+    display: block;
+}
+
+#board_form {
+    border: none;
+}
+
+.post_input {
+    margin: 0.5% 0.5%;
+    text-align: center;
+}
+
+input {
+    width: 70%;
+    height: 2em;
+    border: none;
+    border-radius: 3px;
+    outline: 1px solid lightgrey;
+}
+
+input:focus {
+    outline: 2px solid lightgrey;
+}
+
+textarea {
+    width: 70%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+    border-radius: 3px;
+    outline: 1px solid lightgrey;
 
 }
 
-.under_line {
-    margin: 4% 0 2% 0;
+textarea:focus {
+    outline: 2px solid lightgrey;
+}
+
+.post_btn {
+    width: 70%;
+    margin: 1% auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 button {
-    background-color: transparent;
+    width: 10%;
+    height: 5%;
+    border: none;
+    border-radius: 4px;
+    align-items: center;
+    display: block;
+}
+
+button:focus {
     outline: none;
 }
