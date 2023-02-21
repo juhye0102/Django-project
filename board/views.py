@@ -1,13 +1,13 @@
-from django.db.models import F
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 
 from .forms import PostForm
 from .models import Post
 
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 # 메인 화면
@@ -26,6 +26,7 @@ def list(request):
     context = {
         'items': Post.objects.all()
     }
+    page = request.GET.get('page')
     return HttpResponse(template.render(context, request))
 
 
@@ -68,3 +69,5 @@ def delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
     return redirect('/board/list/')
+
+
