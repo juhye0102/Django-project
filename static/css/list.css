@@ -1,6 +1,6 @@
 body {
     background-color: #F8F9FA;
-    margin: 2% 10% 2% 10%;
+    margin: 2% 15% 2% 15%;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -10,6 +10,81 @@ header {
     position: relative;
     width: 100%;
     display: flex;
+}
+
+aside {
+    width: 100vw;
+}
+
+.menu {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    background-color: transparent;
+    color: #000;
+    transition: all 0.5s ease;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu a, .menu > label {
+    display: block;
+    height: 25px;
+    padding: 8px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #000;
+}
+.menu ul li:hover, .menu > label:hover {
+    background-color: transparent;
+    color: #000;
+    border-radius: 10px;
+}
+.menu div {
+    position: absolute;
+    left: 17%;
+    line-height: 1.5;
+    font-size: 1em;
+    padding: 0 0 0 20px;
+}
+
+#expand_menu:checked ~ ul {
+    display: block;
+    height: auto;
+}
+
+#expand_menu:not(:checked) ~ ul {
+    display: none;
+}
+
+.menu ::before {
+    font-family: 'Material Icons', serif;
+    font-size: 1.5em;
+    float: left;
+    clear: left;
+}
+.menu label::before{ content: '\e5d2'; }
+.menu li:nth-child(1) a::before{ content: '\e87d'; }
+.menu li:nth-child(2) a::before{ content: '\e88a'; }
+
+@media screen and (max-width:1023px) {
+    .menu {
+        width: 60px;
+    }
+}
+@media screen and (max-width:540px) {
+    .menu #expand_menu:not(:checked) ~ ul {
+        display: none;
+    }
 }
 
 .blog_title {
@@ -80,4 +155,3 @@ header {
     width: 50%;
     text-align: right;
 }
-
