@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 
+from . import models
 from .forms import PostForm
 from .models import Post
 
@@ -22,11 +23,16 @@ def index(request):
 
 # (임시)전체 게시글 조회
 def list(request):
-    template = loader.get_template('list.html')
-    context = {
-        'items': Post.objects.all()
-    }
+    post_list = Post.objects.all()
     page = request.GET.get('page')
+    paginator = Paginator('items', 9)
+
+    page_obj = paginator.get_page(page)
+    context = {
+        'items': Post.objects.all(),
+        'post_list': page_obj,
+    }
+    template = loader.get_template('list.html')
     return HttpResponse(template.render(context, request))
 
 
@@ -69,5 +75,3 @@ def delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
     return redirect('/board/list/')
-
-
