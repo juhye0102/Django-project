@@ -3,12 +3,23 @@
     <meta charset="UTF-8">
     <title>게시물 리스트</title>
     <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     <header>
         <h2 class="blog_title">Blog</h2>
-        <a class="post_add" href="{% url 'create' %}"><h3>글 작성하기</h3></a>
     </header>
+    <aside>
+        <div class="menu">
+            <label for="expand_menu"></label>
+            <input type="checkbox" id="expand_menu" name="expand_menu">
+            <ul>
+                <li><a href="{% url 'create' %}" class="item"><div>게시글 작성</div></a></li>
+                <li><a href="{% url 'index' %}" class="item"><div>홈</div></a></li>
+            </ul>
+        </div>
+    </aside>
     <div class="content_wrapper">
     {% for item in items %}
         <div class="list_wrapper">
@@ -16,7 +27,6 @@
                 <a href="{% url 'detail' pk=item.pk %}" style="text-decoration: none; color: black;"><p class="post_title">{{ item.title }} </p></a>
                 <p class="post_summary">{{ item.summary }}</p>
             </div>
-            <!--<a href="{% url 'delete' item.pk %}" style="color: black;" onclick="alert('삭제되었습니다.')">[ 삭제 ]</a>-->
             <script class="post_at">
                 if("{{ item.created_at }}" === "{{ item.updated_at }}") {
                     document.write(" 작성일: {{ item.created_at }} ")
@@ -32,21 +42,23 @@
         </div>
         {% endfor %}
     </div>
-    <div>
-        <ul style="display: flex; list-style: none;">
-        {% if page_object.has_previous %}
-        <li style="margin: 3%";><a style="text-decoration: none; color: slategray;" href="?page={{ page_object.previous_page_number }}">&#10094; Prev</a></li>
-        {% endif %}
-            {% for page in paginator.page_range %}
-                {% if page == page_object.number %}
-                    <li style="margin: 3%;"><a style="text-decoration: none; color: black; font: bold;" href="?page={{ page }}">{{ page }}</a></li>
-                {% else %}
-                    <li style="margin: 3%;"><a style="text-decoration: none; color: black" href="?page={{ page }}">{{ page }}</a></li>
-                {% endif %}
-            {% endfor %}
-        {% if page_object.has_next %}
-        <li style="margin: 3%";><a style="text-decoration: none; color: slategray;" href="?page={{ page_object.next_page_number }}">&#10095;</a></li>
-        {% endif %}
-        </ul>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="pagination">
+                <span class="step-links text-center" style="width: 100%;">
+                    {% if context.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{ context.previous_page_number }}">{{ context.previous_page_number }}</a>
+                    {% endif %}
+                    <span class="current">
+                        {{ context.number }}
+                    </span>
+                    {% if context.has_next %}
+                        <a href="?page={{ context.next_page_number }}">{{ context.next_page_number }}</a>
+                        <a href="?page={{ context.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
     </div>
 </body>
